@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  #Configuration for Module Devise And Doorkeeper
   scope :api , defaults: { format: :json } do
     scope :v1 do
       devise_for :users,
@@ -13,8 +13,14 @@ Rails.application.routes.draw do
       use_doorkeeper do
         skip_controllers :applications, :authorized_applications, :authorizations
       end
-      get 'posts', to: 'posts#index'
+
     end
   end
-  
+  #Routes for application
+  namespace :api do
+    namespace :v1 do
+      resources :posts
+    end
+  end
+
 end
