@@ -1,3 +1,4 @@
+ruby "2.4.2"
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -28,6 +29,7 @@ gem 'rack-cors'
 gem 'swagger-docs'
 gem 'devise'
 gem 'doorkeeper'
+gem 'rails_12factor'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
