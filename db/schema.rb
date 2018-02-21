@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20180214040140) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer "resource_owner_id", null: false
-    t.integer "application_id", null: false
+    t.bigint "application_id", null: false
     t.string "token", null: false
     t.integer "expires_in", null: false
     t.text "redirect_uri", null: false
@@ -27,7 +30,7 @@ ActiveRecord::Schema.define(version: 20180214040140) do
 
   create_table "oauth_access_tokens", force: :cascade do |t|
     t.integer "resource_owner_id"
-    t.integer "application_id"
+    t.bigint "application_id"
     t.string "token", null: false
     t.string "refresh_token"
     t.integer "expires_in"
@@ -53,7 +56,7 @@ ActiveRecord::Schema.define(version: 20180214040140) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "title"
     t.string "body"
     t.datetime "created_at", null: false
@@ -87,4 +90,7 @@ ActiveRecord::Schema.define(version: 20180214040140) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
+  add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "posts", "users"
 end
