@@ -1,7 +1,7 @@
-class Api::V1::PostsController < Api::V1::ApplicationController
+class Api::V1::PostsController < ApplicationController
   before_action :doorkeeper_authorize!
   before_action :set_post, only: [:show, :update, :destroy]
-  
+
   # POST /users
   swagger_controller :Posts, "Post Management"
 

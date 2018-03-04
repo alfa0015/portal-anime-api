@@ -49,4 +49,4 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-*.rdb
+config/database\.yml
