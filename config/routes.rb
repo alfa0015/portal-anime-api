@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   #Configuration for Module Devise And Doorkeeper
   scope :api , defaults: { format: :json } do
     scope :v1 do
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :posts
+      resources :tvshows
     end
   end
 
