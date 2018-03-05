@@ -24,10 +24,29 @@
 #  updated_at             :datetime         not null
 #
 
-require 'test_helper'
+FactoryBot.define do
+  sequence :email do |n|
+    "email#{n}@factory.com"
+  end
+  factory :user do
+    email
+    password "password"
+    password_confirmation "password"
 
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+    factory :user_donmy do
+    	email
+    	password "password"
+    	password_confirmation "password"
+    end
+    factory :user_failer do
+    	email
+    	password "pass"
+    	password_confirmation "pass"
+    end
+    factory :user_sequence do
+        sequence(:email){ |n| "user#{n}@localhost.local" }
+        password "password"
+        password_confirmation "password"
+    end
+  end
 end

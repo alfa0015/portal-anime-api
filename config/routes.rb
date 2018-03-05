@@ -1,3 +1,6 @@
+# == Route Map
+#
+
 Rails.application.routes.draw do
   #Configuration for Module Devise And Doorkeeper
   scope :api , defaults: { format: :json } do
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
         registrations: "api/v1/registrations"
       }
       use_doorkeeper do
+        controllers :tokens => 'api/v1/access_token'
         skip_controllers :applications, :authorized_applications, :authorizations
       end
 

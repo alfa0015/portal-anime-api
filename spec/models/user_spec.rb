@@ -24,14 +24,12 @@
 #  updated_at             :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+RSpec.describe User, type: :model do
+
+  it{ should validate_presence_of(:email) }
+  it{should validate_uniqueness_of(:email).case_insensitive}
+  it{should validate_presence_of(:password)}
+  
+end
