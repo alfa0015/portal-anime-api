@@ -50,3 +50,5 @@ Temporary Items
 .apdisk
 
 config/database\.yml
+
+*.rdb

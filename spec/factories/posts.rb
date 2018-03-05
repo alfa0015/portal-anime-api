@@ -10,9 +10,10 @@
 #  updated_at :datetime         not null
 #
 
-class Post < ApplicationRecord
-  belongs_to :user
-
-  validates :title, presence: true
-  validates :body, presence: true
+FactoryBot.define do
+  factory :post do
+    title "Post"
+    body "Post body"
+    association :user, factory: :user
+  end
 end

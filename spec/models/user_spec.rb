@@ -24,13 +24,12 @@
 #  updated_at             :datetime         not null
 #
 
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,:recoverable, :rememberable, :trackable, :validatable
+require 'rails_helper'
 
-  has_many :tokens, class_name: 'Doorkeeper::AccessToken',foreign_key: :resource_owner_id
-  has_one :token, -> { order 'created_at DESC' },class_name: 'Doorkeeper::AccessToken', foreign_key: :resource_owner_id
+RSpec.describe User, type: :model do
 
-  has_many :posts
+  it{ should validate_presence_of(:email) }
+  it{should validate_uniqueness_of(:email).case_insensitive}
+  it{should validate_presence_of(:password)}
+  
 end

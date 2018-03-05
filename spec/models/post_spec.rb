@@ -10,9 +10,12 @@
 #  updated_at :datetime         not null
 #
 
-class Post < ApplicationRecord
-  belongs_to :user
+require 'rails_helper'
 
-  validates :title, presence: true
-  validates :body, presence: true
+RSpec.describe Post, type: :model do
+
+  it{ should validate_presence_of(:title) }
+  it{ should validate_presence_of(:body) }
+  it{ should belong_to(:user) }
+
 end

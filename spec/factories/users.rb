@@ -24,13 +24,29 @@
 #  updated_at             :datetime         not null
 #
 
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,:recoverable, :rememberable, :trackable, :validatable
+FactoryBot.define do
+  sequence :email do |n|
+    "email#{n}@factory.com"
+  end
+  factory :user do
+    email
+    password "password"
+    password_confirmation "password"
 
-  has_many :tokens, class_name: 'Doorkeeper::AccessToken',foreign_key: :resource_owner_id
-  has_one :token, -> { order 'created_at DESC' },class_name: 'Doorkeeper::AccessToken', foreign_key: :resource_owner_id
-
-  has_many :posts
+    factory :user_donmy do
+    	email
+    	password "password"
+    	password_confirmation "password"
+    end
+    factory :user_failer do
+    	email
+    	password "pass"
+    	password_confirmation "pass"
+    end
+    factory :user_sequence do
+        sequence(:email){ |n| "user#{n}@localhost.local" }
+        password "password"
+        password_confirmation "password"
+    end
+  end
 end
