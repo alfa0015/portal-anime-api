@@ -10,14 +10,12 @@
 #  updated_at :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-one:
-  user: one
-  title: MyString
-  body: MyString
+RSpec.describe Post, type: :model do
 
-two:
-  user: two
-  title: MyString
-  body: MyString
+  it{ should validate_presence_of(:title) }
+  it{ should validate_presence_of(:body) }
+  it{ should belong_to(:user) }
+
+end

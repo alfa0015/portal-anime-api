@@ -10,10 +10,10 @@
 #  updated_at :datetime         not null
 #
 
-require 'test_helper'
-
-class PostTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+FactoryBot.define do
+  factory :post do
+    title "Post"
+    body "Post body"
+    association :user, factory: :user
+  end
 end
