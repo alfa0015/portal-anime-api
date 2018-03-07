@@ -4,16 +4,20 @@
   "basePath": "http://localhost:3000",
   "apis": [
     {
+      "path": "/api/v1/oauth.{format}",
+      "description": "Authentication User"
+    },
+    {
+      "path": "/api/v1/registration.{format}",
+      "description": "Registration user"
+    },
+    {
       "path": "/api/v1/posts.{format}",
       "description": "Post Management"
     },
     {
       "path": "/api/v1/animes.{format}",
       "description": "Animes Management"
-    },
-    {
-      "path": "/api/v1/registration.{format}",
-      "description": "Registration user"
     }
   ],
   "authorizations": null,
