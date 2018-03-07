@@ -2,15 +2,6 @@ class Api::V1::PostsController < ApplicationController
   before_action :doorkeeper_authorize!
   before_action :set_post, only: [:show, :update, :destroy]
 
-  # POST /users
-  swagger_controller :Posts, "Post Management"
-
-  swagger_api :index do
-    summary "Get all Posts"
-    notes "Nothing else, it's that simple!"
-    response :ok
-  end
-
   # GET /posts
   # GET /posts.json
   def index

@@ -17,7 +17,7 @@
 !/log/.keep
 !/tmp/.keep
 ## Ignore Swagger JSON files.
-/public/apidocs/
+
 
 .byebug_history
 

@@ -2,6 +2,7 @@ class Api::V1::AnimesController < ApplicationController
   before_action :doorkeeper_authorize!, except: [:index,:show]
   before_action :set_anime, only: [:show, :update, :destroy]
 
+
   # GET /animes
   # GET /animes.json
   def index

@@ -8,7 +8,7 @@
       "path": "/api/v1/posts",
       "operations": [
         {
-          "summary": "Get all post",
+          "summary": "Get all Posts",
           "notes": "Nothing else, it's that simple!",
           "responseMessages": [
             {
