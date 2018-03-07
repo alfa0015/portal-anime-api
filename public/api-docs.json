@@ -4,15 +4,27 @@
   "basePath": "http://localhost:3000",
   "apis": [
     {
+      "path": "/api/v1/oauth.{format}",
+      "description": "Authentication User"
+    },
+    {
+      "path": "/api/v1/registration.{format}",
+      "description": "Registration user"
+    },
+    {
       "path": "/api/v1/posts.{format}",
-      "description": "Post Manage"
+      "description": "Post Management"
+    },
+    {
+      "path": "/api/v1/animes.{format}",
+      "description": "Animes Management"
     }
   ],
   "authorizations": null,
   "info": {
     "title": "Portal Anime API",
-    "description": "Documentation for api portal-anime",
-    "contact": "alfa0015.rafael@gmail.com",
+    "description": "How Swagger works",
+    "contact": "parthmodi54@yahoo.com",
     "license": "Apache 2.0",
     "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.html"
   }
