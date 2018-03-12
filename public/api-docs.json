@@ -18,13 +18,17 @@
     {
       "path": "/api/v1/animes.{format}",
       "description": "Animes Management"
+    },
+    {
+      "path": "/api/v1/rcontrollers.{format}",
+      "description": "Controller the api"
     }
   ],
   "authorizations": null,
   "info": {
     "title": "Portal Anime API",
-    "description": "How Swagger works",
-    "contact": "parthmodi54@yahoo.com",
+    "description": "Api cominication communities of animes",
+    "contact": "alfa0015.rafael@gmail.com",
     "license": "Apache 2.0",
     "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.html"
   }

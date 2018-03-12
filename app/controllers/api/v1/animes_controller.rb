@@ -1,5 +1,6 @@
 class Api::V1::AnimesController < ApplicationController
   before_action :doorkeeper_authorize!, except: [:index,:show]
+  load_and_authorize_resource
   before_action :set_anime, only: [:show, :update, :destroy]
 
 
