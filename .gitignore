@@ -17,7 +17,7 @@
 !/log/.keep
 !/tmp/.keep
 ## Ignore Swagger JSON files.
-/public/apidocs/
+
 
 .byebug_history
 
@@ -50,3 +50,5 @@ Temporary Items
 .apdisk
 
 config/database\.yml
+
+*.rdb

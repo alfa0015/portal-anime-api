@@ -1,15 +1,6 @@
-class Api::V1::PostsController < Api::V1::ApplicationController
+class Api::V1::PostsController < ApplicationController
   before_action :doorkeeper_authorize!
   before_action :set_post, only: [:show, :update, :destroy]
-  
-  # POST /users
-  swagger_controller :Posts, "Post Management"
-
-  swagger_api :index do
-    summary "Get all Posts"
-    notes "Nothing else, it's that simple!"
-    response :ok
-  end
 
   # GET /posts
   # GET /posts.json
@@ -28,7 +19,7 @@ class Api::V1::PostsController < Api::V1::ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      render :show, status: :created, location: @post
+      render :show, status: :created
     else
       render json: @post.errors, status: :unprocessable_entity
     end
@@ -38,7 +29,7 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     if @post.update(post_params)
-      render :show, status: :ok, location: @post
+      render :show, status: :ok
     else
       render json: @post.errors, status: :unprocessable_entity
     end

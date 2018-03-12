@@ -1,4 +1,10 @@
+# == Route Map
+#
+
 Rails.application.routes.draw do
+  #route for redirect swagger
+  get '/' => redirect('/swagger/dist/index.html')
+
   #Configuration for Module Devise And Doorkeeper
   scope :api , defaults: { format: :json } do
     scope :v1 do
@@ -11,15 +17,19 @@ Rails.application.routes.draw do
         registrations: "api/v1/registrations"
       }
       use_doorkeeper do
+        controllers :tokens => 'api/v1/access_token'
         skip_controllers :applications, :authorized_applications, :authorizations
       end
 
     end
   end
   #Routes for application
-  namespace :api do
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      #route for configuration consumer swagger
+      get '/apidocs', to: 'swagger#index'
       resources :posts
+      resources :animes
     end
   end
 
