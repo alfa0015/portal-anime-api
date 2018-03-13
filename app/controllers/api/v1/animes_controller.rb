@@ -1,6 +1,6 @@
 class Api::V1::AnimesController < ApplicationController
   before_action :doorkeeper_authorize!, except: [:index,:show]
-  before_action :set_anime, only: [:show, :update, :destroy]
+  before_action :set_anime, only: [:show, :update, :destroy, :tags,:add_tags,:delete_tags]
 
 
   # GET /animes
@@ -42,6 +42,27 @@ class Api::V1::AnimesController < ApplicationController
     @anime.destroy
   end
 
+  def tags
+  end
+
+  def add_tags
+    new_tag = tags_params["tags"]
+    @anime.tags_will_change!
+    @anime.tags.push(new_tag)
+    @anime.save
+    render :tags, status: :ok
+  end
+
+  def delete_tags
+    @anime.tags_will_change!
+    @anime.tags = @anime.tags.select{|tag| tag["name"] != tags_params["tags"]["name"]}
+    if @anime.save
+      render json:{},status: :no_content
+    else
+      render json:{errors: @animes.errors.full_messages},status: :unprocessable_entity
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_anime
@@ -51,5 +72,9 @@ class Api::V1::AnimesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def anime_params
       params.require(:anime).permit(:name, :synopsis, :sessions, :episodes)
+    end
+
+    def tags_params
+      params.require(:anime).permit(:tags => [:name])
     end
 end
