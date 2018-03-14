@@ -13,10 +13,7 @@ json.info do
 end
 json.host ""
 json.basePath "/api/v1"
-json.schemes [
-  "http",
-  "https"
-]
+json.schemes []
 json.tags [
   {
     name:"apidocs",
