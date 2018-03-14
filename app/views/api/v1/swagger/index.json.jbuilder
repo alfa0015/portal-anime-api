@@ -75,8 +75,7 @@ swagger = {
           name: "grant_type",
           description: "type user authentication",
           required: true,
-          type: "string",
-          value: "password"
+          type: "string"
         }
       ],
       "responses": {
