@@ -1,4 +1,3 @@
-json.swagger "3.0"
 json.info do
   json.description "Documetation for API Portal Anime"
   json.version "1.0.0"
@@ -75,7 +74,8 @@ swagger = {
           name: "grant_type",
           description: "type user authentication",
           required: true,
-          type: "string"
+          type: "string",
+          enum:["password"]
         }
       ],
       "responses": {
