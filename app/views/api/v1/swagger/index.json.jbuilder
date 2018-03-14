@@ -1,3 +1,4 @@
+json.swagger "2.0"
 json.info do
   json.description "Documetation for API Portal Anime"
   json.version "1.0.0"
