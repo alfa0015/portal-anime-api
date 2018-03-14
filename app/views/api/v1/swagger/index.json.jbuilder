@@ -11,9 +11,7 @@ json.info do
     json.url ""
   end
 end
-json.host ""
 json.basePath "/api/v1"
-json.schemes []
 json.tags [
   {
     name:"apidocs",
