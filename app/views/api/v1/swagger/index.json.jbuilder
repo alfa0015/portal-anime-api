@@ -73,10 +73,10 @@ swagger = {
         {
           in: "formData",
           name: "grant_type",
-          description: "email user for authentication",
+          description: "type user authentication",
           required: true,
           type: "string",
-          enum:["password"]
+          value: "password"
         }
       ],
       "responses": {
