@@ -11,10 +11,11 @@ json.info do
     json.url ""
   end
 end
-json.host "#{request.host_with_port}/api"
-json.basePath "/v1"
+json.host ""
+json.basePath "/api/v1"
 json.schemes [
-  "http"
+  "http",
+  "https"
 ]
 json.tags [
   {
