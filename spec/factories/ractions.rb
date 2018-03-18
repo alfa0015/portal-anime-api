@@ -12,6 +12,5 @@
 FactoryBot.define do
   factory :raction do
     name "MyString"
-    rcontroller nil
   end
 end

@@ -1,12 +1,14 @@
 class Api::V1::RactionsController < ApplicationController
-  before_action :doorkeeper_authorize!, except: [:index,:show]
+  before_action :doorkeeper_authorize!
   load_and_authorize_resource
+  before_action :set_controller
   before_action :set_raction, only: [:show, :update, :destroy]
 
   # GET /ractions
   # GET /ractions.json
   def index
-    @ractions = Raction.all
+    @ractions = Raction.page(page).per(per_page)
+    set_pagination_header(@ractions,"rcontroller_ractions")
   end
 
   # GET /ractions/1
@@ -17,10 +19,7 @@ class Api::V1::RactionsController < ApplicationController
   # POST /ractions
   # POST /ractions.json
   def create
-
-    rcontroller = Rcontroller.find(params[:rcontroller_id])
-    @raction = rcontroller.ractions.new(raction_params)
-
+    @raction = @rcontroller.ractions.new(raction_params)
     if @raction.save
       render :show, status: :created
     else
@@ -50,12 +49,12 @@ class Api::V1::RactionsController < ApplicationController
       @raction = Raction.find(params[:id])
     end
 
+    def set_controller
+      @rcontroller = Rcontroller.find(params[:rcontroller_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def raction_params
-      begin
-        params.require(:raction).permit(:name, :rcontroller_id)
-      rescue ActionController::ParameterMissing => e
-        render json:{errors:e}
-      end
+      params.require(:raction).permit(:name, :rcontroller_id)
     end
 end

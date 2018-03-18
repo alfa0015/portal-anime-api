@@ -7,7 +7,8 @@ class Api::V1::AnimesController < ApplicationController
   # GET /animes
   # GET /animes.json
   def index
-    @animes = Anime.all
+    @animes = Anime.page(page).per(per_page)
+    set_pagination_header(@animes,"animes")
   end
 
   # GET /animes/1

@@ -1,5 +1,5 @@
 class Api::V1::RcontrollersController < ApplicationController
-  before_action :doorkeeper_authorize!, except: [:index,:show]
+  before_action :doorkeeper_authorize!
   load_and_authorize_resource
   before_action :set_rcontroller, only: [:show, :update, :destroy]
 
@@ -7,7 +7,8 @@ class Api::V1::RcontrollersController < ApplicationController
   # GET /rcontrollers
   # GET /rcontrollers.json
   def index
-    @rcontrollers = Rcontroller.all
+    @rcontrollers = Rcontroller.page(page).per(per_page)
+    set_pagination_header(@rcontrollers,"rcontrollers")
   end
 
   # GET /rcontrollers/1

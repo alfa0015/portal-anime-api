@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::API
-  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    render json: {errors: exception }, status: :not_found
+  end
+
   rescue_from ActionController::ParameterMissing do |exception|
     render json: {errors:"#{exception.param} is required"}, status: 422
   end
@@ -18,8 +22,28 @@ class ApplicationController < ActionController::API
     User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
   end
 
-  def record_not_found
-    render json: {errors:"Record not found"} # Assuming you have a template named 'record_not_found'
+  #Method set page pagination
+  def page
+    @page ||= params[:page] || 1
   end
 
+  #Method set number record per page
+  def per_page
+    @per_page ||= params[:per_page] || 25
+  end
+
+  #Method set headers pagination
+  def set_pagination_header(resource,resource_name)
+    #print current page
+    headers["x-page"] = page
+    #print records per page
+    headers["x-per-page"] = per_page
+    #print total records
+    headers["x-total"] = resource.total_count
+    #print next page url
+    headers["next_page"] = eval "api_v1_#{resource_name}_url(request.query_parameters.merge(page: resource.next_page))" if resource.next_page
+    #print prev page url
+    headers["prev_page"] = eval "api_v1_#{resource_name}_url(request.query_parameters.merge(page: resource.next_page))" if resource.prev_page
+  end
+  
 end
