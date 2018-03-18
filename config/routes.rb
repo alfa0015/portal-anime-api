@@ -30,9 +30,9 @@ Rails.application.routes.draw do
       get '/apidocs', to: 'swagger#index'
       resources :posts
       resources :animes
-      get '/animes/:id/tags', to: 'animes#tags'
-      post '/animes/:id/tags', to: 'animes#add_tags'
-      delete '/animes/:id/tags', to: 'animes#delete_tags'
+      resources :rcontrollers do
+        resources :ractions
+      end
     end
   end
 

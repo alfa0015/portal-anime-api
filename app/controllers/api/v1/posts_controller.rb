@@ -1,5 +1,6 @@
 class Api::V1::PostsController < ApplicationController
   before_action :doorkeeper_authorize!
+  load_and_authorize_resource
   before_action :set_post, only: [:show, :update, :destroy]
 
   # GET /posts
