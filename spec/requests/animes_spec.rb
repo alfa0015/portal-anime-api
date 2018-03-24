@@ -25,6 +25,15 @@ RSpec.describe "Animes", type: :request do
     @anime = FactoryBot.build(:anime)
   }
 
+  let(:tag){
+    {
+      tags:{
+        name:"tag_name"
+      }
+    }
+
+  }
+
   let(:update_attributes){
     {
       name:"new_name 123490450"
@@ -646,6 +655,27 @@ RSpec.describe "Animes", type: :request do
         expect{
           delete api_v1_anime_path(@anime), headers:invalid_header, as: :json
         }.to change(Anime,:count).by(0)
+      end
+
+    end
+
+  end
+
+  describe "POST /api/v1/animes/add_tags" do
+
+    context "with valid token & admin" do
+
+      before :each do
+        @anime = FactoryBot.create(:anime)
+        post api_v1_anime_add_tags_path(@anime), headers:admin_header, params:{ anime: tag }, as: :json
+      end
+
+      it { expect(response).to have_http_status(:created) }
+
+      it "create to rcontroller" do
+        expect{
+          post api_v1_anime_add_tags_path(@anime), headers:admin_header, params:{ anime: tag }, as: :json
+        }.to change(@anime.tags,:count).by(1)
       end
 
     end

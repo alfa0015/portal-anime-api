@@ -2,6 +2,7 @@ class Api::V1::AnimesController < ApplicationController
   before_action :doorkeeper_authorize!, except: [:index,:show]
   load_and_authorize_resource
   before_action :set_anime, only: [:show, :update, :destroy]
+  before_action :set_anime_tag, only: [:add_tags]
 
 
   # GET /animes
@@ -48,11 +49,12 @@ class Api::V1::AnimesController < ApplicationController
   end
 
   def add_tags
+    binding.pry
     new_tag = tags_params["tags"]
     @anime.tags_will_change!
     @anime.tags.push(new_tag)
     @anime.save
-    render :tags, status: :ok
+    render :tags, status: :create
   end
 
   def delete_tags
@@ -69,6 +71,10 @@ class Api::V1::AnimesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_anime
       @anime = Anime.find(params[:id])
+    end
+
+    def set_anime_tag
+      @anime = Anime.find(params[:anime_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

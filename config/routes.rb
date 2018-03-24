@@ -29,7 +29,10 @@ Rails.application.routes.draw do
       #route for configuration consumer swagger
       get '/apidocs', to: 'swagger#index'
       resources :posts
-      resources :animes
+      resources :animes do
+        post '/add_tags', to: "animes#add_tags"
+        delete '/delete_tags', to: "animes#delete_tags"
+      end
       resources :rcontrollers do
         resources :ractions
       end
