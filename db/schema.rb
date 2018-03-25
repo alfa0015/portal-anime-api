@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180312015312) do
     t.integer "episodes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.hstore "tags", array: true
+    t.hstore "tags", default: [], array: true
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
