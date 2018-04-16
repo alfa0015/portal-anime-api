@@ -20,8 +20,10 @@ class Api::V1::AnimesController < ApplicationController
   # POST /animes
   # POST /animes.json
   def create
+    tags = params["tags"].each{|k,v| v}
+    tags = tags.map{|k,v| v}
+    params["tags"] = tags
     @anime = Anime.new(anime_params)
-
     if @anime.save
       render :show, status: :created
     else
@@ -79,7 +81,7 @@ class Api::V1::AnimesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def anime_params
-      params.require(:anime).permit(:name, :synopsis, :sessions, :episodes)
+      params.permit(:name, :synopsis, :sessions, :episodes,:cover,:tags => [:name])
     end
 
     def tags_params
