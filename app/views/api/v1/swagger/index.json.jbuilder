@@ -76,7 +76,8 @@ swagger = {
           name: "password",
           description: "password user for authentication",
           required: true,
-          type: "string"
+          type: "string",
+          format: "password"
         },
         {
           in: "formData",

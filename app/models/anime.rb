@@ -28,7 +28,7 @@ class Anime < ApplicationRecord
 
   validates :name, uniqueness: true
 
-  validates :name, length: { in: 5..20 }
+  validates :name, length: { minimum: 5 }
   validates :synopsis, length: { minimum: 10 }
 
   validates :sessions, numericality: { only_integer: true }
