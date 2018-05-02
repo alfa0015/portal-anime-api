@@ -1,0 +1,363 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "Controllers",
+  "apis": [
+    {
+      "path": "/api/v1/rcontrollers",
+      "operations": [
+        {
+          "summary": "Get all Controllers",
+          "notes": "controol list",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "Page number",
+              "required": false
+            }
+          ],
+          "nickname": "Api::V1::RcontrollersController#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/rcontrollers/{id}",
+      "operations": [
+        {
+          "summary": "Get all Controllers",
+          "notes": "controol list",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "id controller",
+              "required": true
+            }
+          ],
+          "nickname": "Api::V1::RcontrollersController#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/rcontrollers",
+      "operations": [
+        {
+          "summary": "Create a new User item",
+          "notes": "Notes for creating a new User item",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "rcontroller[name]",
+              "type": "string",
+              "description": "Name",
+              "required": true
+            }
+          ],
+          "nickname": "Api::V1::Animes#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/rcontrollers/{id}",
+      "operations": [
+        {
+          "summary": "Get all Controllers",
+          "notes": "controol list",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "id controller",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "rcontroller[name]",
+              "type": "string",
+              "description": "Name of controller",
+              "required": true
+            }
+          ],
+          "nickname": "Api::V1::RcontrollersController#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/rcontrollers/{id}",
+      "operations": [
+        {
+          "summary": "Get all Controllers",
+          "notes": "controol list",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "id controller",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "rcontroller[name]",
+              "type": "string",
+              "description": "Name of controller",
+              "required": true
+            }
+          ],
+          "nickname": "Api::V1::RcontrollersController#update",
+          "method": "put"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/rcontrollers/{id}",
+      "operations": [
+        {
+          "summary": "Get all Controllers",
+          "notes": "controol list",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "id controller",
+              "required": true
+            }
+          ],
+          "nickname": "Api::V1::RcontrollersController#destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/rcontrollers/{rcontroller_id}/ractions",
+      "operations": [
+        {
+          "summary": "Lis actions to controller",
+          "notes": "",
+          "parameters": [
+            {
+              "name": "rcontroller_id",
+              "paramType": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "nickname": "Api::V1::RactionsController#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/rcontrollers/{id}/ractions",
+      "operations": [
+        {
+          "summary": "Create a new action to controller",
+          "notes": "Create a new action to controller",
+          "parameters": [
+            {
+              "name": "id",
+              "paramType": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "paramType": "form",
+              "name": "raction[name]",
+              "type": "string",
+              "description": "Name of action",
+              "required": true
+            }
+          ],
+          "nickname": "Api::V1::RactionsController#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/rcontrollers/{rcontroller_id}/ractions/{id}",
+      "operations": [
+        {
+          "summary": "Get action for controller",
+          "notes": "controol list",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "rcontroller_id",
+              "paramType": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "nickname": "Api::V1::RactionsController#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/rcontrollers/{rcontroller_id}/ractions/{id}",
+      "operations": [
+        {
+          "summary": "Update action",
+          "notes": "",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "rcontroller_id",
+              "paramType": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "paramType":"form",
+              "name":"raction[name]",
+              "type":"string",
+              "required":true
+            }
+          ],
+          "nickname": "Api::V1::RactionsController#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/rcontrollers/{rcontroller_id}/ractions/{id}",
+      "operations": [
+        {
+          "summary": "Update action",
+          "notes": "",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "rcontroller_id",
+              "paramType": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "paramType":"form",
+              "name":"raction[name]",
+              "type":"string",
+              "required":true
+            }
+          ],
+          "nickname": "Api::V1::RactionsController#update",
+          "method": "put"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/rcontrollers/{rcontroller_id}/ractions/{id}",
+      "operations": [
+        {
+          "summary": "Delete action for controller",
+          "notes": "",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "rcontroller_id",
+              "paramType": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "id",
+              "paramType": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "nickname": "Api::V1::RactionsController#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}
