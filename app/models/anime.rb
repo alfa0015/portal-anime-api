@@ -18,7 +18,7 @@
 
 class Anime < ApplicationRecord
 
-  has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :cover, styles: { medium: "400x400>", small:"200x200" ,thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 
   validates :name, presence: true
   validates :synopsis, presence: true
