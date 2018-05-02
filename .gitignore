@@ -52,3 +52,5 @@ Temporary Items
 config/database\.yml
 
 *.rdb
+
+public/
