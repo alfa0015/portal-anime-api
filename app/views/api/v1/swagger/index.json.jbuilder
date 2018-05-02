@@ -1,4 +1,4 @@
-json.swagger "3.0"
+json.swagger "2.0"
 json.info do
   json.description "Documetation for API Portal Anime"
   json.version "1.0.0"
@@ -11,11 +11,7 @@ json.info do
     json.url ""
   end
 end
-json.host "#{request.host_with_port}/api"
-json.basePath "/v1"
-json.schemes [
-  "http"
-]
+json.basePath "/api/v1"
 json.tags [
   {
     name:"apidocs",
@@ -77,7 +73,7 @@ swagger = {
         {
           in: "formData",
           name: "grant_type",
-          description: "email user for authentication",
+          description: "type user authentication",
           required: true,
           type: "string",
           enum:["password"]
