@@ -24,6 +24,10 @@ json.tags [
   {
     name:"Registration",
     description:"Registration new user"
+  },
+  {
+    name:"Animes",
+    description:"List all animes"
   }
 ]
 swagger = {
@@ -68,7 +72,8 @@ swagger = {
           name: "password",
           description: "password user for authentication",
           required: true,
-          type: "string"
+          type: "string",
+          format: "password"
         },
         {
           in: "formData",
@@ -137,6 +142,196 @@ swagger = {
           "description": "impossible procces request",
         }
       }
+    }
+  },
+  "/animes":{
+    "get":{
+      "tags": [
+        "Animes"
+      ],
+      "summary": "Animes",
+      "description": "Return all animes",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          in: "query",
+          name: "page",
+          description: "",
+          required: false,
+          type: "integer"
+        },
+        {
+          in: "query",
+          name: "per_page",
+          description: "",
+          required: false,
+          type: "integer"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+        }
+      }
+    },
+    "post":{
+      "tags": [
+        "Animes"
+      ],
+      "summary": "Create a New Anime",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          in: "formData",
+          name: "name",
+          description: "name for anime",
+          required: true,
+          type: "string"
+        },
+        {
+          in: "formData",
+          name: "synopsis",
+          description: "synopsis for anime",
+          required: true,
+          type: "string"
+        },
+        {
+          in: "formData",
+          name: "sessions",
+          description: "number sessions for anime",
+          required: true,
+          type: "integer"
+        },
+        {
+          in: "formData",
+          name: "episodes",
+          description: "number episodes for anime",
+          required: true,
+          type: "integer"
+        },
+        {
+          in: "formData",
+          name: "cover",
+          description: "cover image for anime",
+          required: true,
+          type: "file"
+        },
+        {
+          in: "formData",
+          name: "tags[0][name]",
+          description: "name for tag2",
+          required: false,
+          type: "string"
+        },
+        {
+          in: "formData",
+          name: "tags[1][name]",
+          description: "name for tag2",
+          required: false,
+          type: "string"
+        },
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+        },
+        "401": {
+          "description": "Unauthorized for request",
+        }
+      },
+      "security": [
+        {
+          "api_key": []
+        }
+      ]
+    }
+  },
+  "/animes/{id}":{
+    "put":{
+      "tags": [
+        "Animes"
+      ],
+      "summary": "Create a New Anime",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          in: "path",
+          name: "id",
+          description: "anime id",
+          required: true,
+          type: "integer"
+        },
+        {
+          in: "formData",
+          name: "name",
+          description: "name for anime",
+          required: false,
+          type: "string"
+        },
+        {
+          in: "formData",
+          name: "synopsis",
+          description: "synopsis for anime",
+          required: false,
+          type: "string"
+        },
+        {
+          in: "formData",
+          name: "sessions",
+          description: "number sessions for anime",
+          required: false,
+          type: "integer"
+        },
+        {
+          in: "formData",
+          name: "episodes",
+          description: "number episodes for anime",
+          required: false,
+          type: "integer"
+        },
+        {
+          in: "formData",
+          name: "cover",
+          description: "cover image for anime",
+          required: false,
+          type: "file"
+        },
+        {
+          in: "formData",
+          name: "tags[0][name]",
+          description: "name for tag2",
+          required: false,
+          type: "string"
+        },
+        {
+          in: "formData",
+          name: "tags[1][name]",
+          description: "name for tag2",
+          required: false,
+          type: "string"
+        },
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+        },
+        "401": {
+          "description": "Unauthorized for request",
+        }
+      },
+      "security": [
+        {
+          "api_key": []
+        }
+      ]
     }
   }
 }
