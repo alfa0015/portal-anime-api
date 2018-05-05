@@ -42,14 +42,6 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
     arel (8.0.0)
-    aws-sdk (2.11.43)
-      aws-sdk-resources (= 2.11.43)
-    aws-sdk-core (2.11.43)
-      aws-sigv4 (~> 1.0)
-      jmespath (~> 1.0)
-    aws-sdk-resources (2.11.43)
-      aws-sdk-core (= 2.11.43)
-    aws-sigv4 (1.0.2)
     bcrypt (3.1.11)
     builder (3.2.3)
     byebug (10.0.0)
@@ -81,7 +73,6 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
-    jmespath (1.4.0)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -222,7 +213,6 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  aws-sdk (~> 2.6)
   byebug
   cancancan
   devise
