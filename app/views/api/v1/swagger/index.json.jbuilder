@@ -223,6 +223,13 @@ swagger = {
         },
         {
           in: "formData",
+          name: "banner",
+          description: "cover image for anime",
+          required: true,
+          type: "file"
+        },
+        {
+          in: "formData",
           name: "tags[0][name]",
           description: "name for tag2",
           required: false,
@@ -252,6 +259,33 @@ swagger = {
     }
   },
   "/animes/{id}":{
+    "get":{
+      "tags": [
+        "Animes"
+      ],
+      "summary": "Get anime",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          in: "path",
+          name: "id",
+          description: "anime id",
+          required: true,
+          type: "integer"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+        },
+        "401": {
+          "description": "Unauthorized for request",
+        }
+      }
+    },
     "put":{
       "tags": [
         "Animes"
@@ -300,6 +334,13 @@ swagger = {
         {
           in: "formData",
           name: "cover",
+          description: "cover image for anime",
+          required: false,
+          type: "file"
+        },
+        {
+          in: "formData",
+          name: "banner",
           description: "cover image for anime",
           required: false,
           type: "file"
