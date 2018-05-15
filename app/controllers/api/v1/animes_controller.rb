@@ -8,7 +8,7 @@ class Api::V1::AnimesController < ApplicationController
   # GET /animes
   # GET /animes.json
   def index
-    @animes = Anime.page(page).per(per_page)
+    @animes = Anime.order(id: :desc).page(page).per(per_page)
     set_pagination_header(@animes,"animes")
   end
 
@@ -20,9 +20,11 @@ class Api::V1::AnimesController < ApplicationController
   # POST /animes
   # POST /animes.json
   def create
-    tags = params["tags"].each{|k,v| v}
-    tags = tags.map{|k,v| v}
-    params["tags"] = tags
+    unless params["tags"].present? or params["tags"].blank?
+      tags = params["tags"].each{|k,v| v}
+      tags = tags.map{|k,v| v}
+      params["tags"] = tags
+    end
     @anime = Anime.new(anime_params)
     if @anime.save
       render :show, status: :created
@@ -81,7 +83,7 @@ class Api::V1::AnimesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def anime_params
-      params.permit(:name, :synopsis, :sessions, :episodes,:cover,:tags => [:name])
+      params.permit(:name, :synopsis, :sessions, :episodes,:cover,:banner,:tags => [:name])
     end
 
     def tags_params
