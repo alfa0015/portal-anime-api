@@ -30,23 +30,23 @@ FactoryBot.define do
   end
   factory :user do
     email
-    password "password"
-    password_confirmation "password"
+    password {"password"}
+    password_confirmation {"password"}
 
     factory :user_donmy do
     	email
-    	password "password"
-    	password_confirmation "password"
+    	password {"password"}
+    	password_confirmation {"password"}
     end
     factory :user_failer do
     	email
-    	password "pass"
-    	password_confirmation "pass"
+    	password {"pass"}
+    	password_confirmation {"pass"}
     end
     factory :user_sequence do
         sequence(:email){ |n| "user#{n}@localhost.local" }
-        password "password"
-        password_confirmation "password"
+        password {"password"}
+        password_confirmation {"password"}
     end
   end
 end

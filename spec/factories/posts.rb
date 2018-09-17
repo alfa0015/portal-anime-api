@@ -12,8 +12,8 @@
 
 FactoryBot.define do
   factory :post do
-    title "Post"
-    body "Post body"
+    title {"Post"}
+    body {"Post body"}
     association :user, factory: :user
   end
 end

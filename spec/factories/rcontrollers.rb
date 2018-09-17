@@ -10,6 +10,6 @@
 
 FactoryBot.define do
   factory :rcontroller do
-    name "MyString"
+    name {"MyString"}
   end
 end

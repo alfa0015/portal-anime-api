@@ -11,6 +11,6 @@
 
 FactoryBot.define do
   factory :raction do
-    name "MyString"
+    name {"MyString"}
   end
 end

@@ -25,8 +25,8 @@ FactoryBot.define do
     sequence :name do |n|
       "MyString string#{n}"
     end
-    synopsis "MyText text text"
-    sessions 1
-    episodes 1
+    synopsis { "MyText text text" }
+    sessions { 1 }
+    episodes { 1 }
   end
 end
