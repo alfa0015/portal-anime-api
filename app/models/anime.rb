@@ -22,14 +22,12 @@
 
 class Anime < ApplicationRecord
 
-  has_attached_file :cover, styles: { medium: "400x400>", small:"200x200" ,thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  has_attached_file :banner, styles: { medium: "400x400>", small:"200x200" ,thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_one_attached :cover
 
   validates :name, presence: true
   validates :synopsis, presence: true
   validates :sessions, presence: true
   validates :episodes, presence: true
-  validates :cover, presence: true
 
   validates :name, uniqueness: true
 
@@ -39,6 +37,4 @@ class Anime < ApplicationRecord
   validates :sessions, numericality: { only_integer: true }
   validates :episodes, numericality: { only_integer: true }
 
-  validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/
-  validates_attachment_content_type :banner, content_type: /\Aimage\/.*\z/
 end
