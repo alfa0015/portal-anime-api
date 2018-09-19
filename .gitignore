@@ -17,8 +17,11 @@
 !/log/.keep
 !/tmp/.keep
 \public/system
+
 ## Ignore Swagger JSON files.
 
+# Ignore uploaded files in development
+/storage/*
 
 .byebug_history
 
