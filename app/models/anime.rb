@@ -38,6 +38,6 @@ class Anime < ApplicationRecord
   validates :sessions, numericality: { only_integer: true }
   validates :episodes, numericality: { only_integer: true }
 
-  validates :cover, file_size: { less_than_or_equal_to: 100.kilobytes, message: 'avatar should be less than %{count}' },file_content_type: { allow: /^image\/.*/,message: 'the file has to be an image' }
-  validates :banner, file_size: { less_than_or_equal_to: 100.kilobytes, message: 'avatar should be less than %{count}' },file_content_type: { allow: /^image\/.*/,message: 'the file has to be an image' }
+  validates :cover, file_size: { less_than_or_equal_to: 500.kilobytes, message: 'avatar should be less than %{count}' },file_content_type: { allow: /^image\/.*/,message: 'the file has to be an image' }
+  validates :banner, file_size: { less_than_or_equal_to: 500.kilobytes, message: 'avatar should be less than %{count}' },file_content_type: { allow: /^image\/.*/,message: 'the file has to be an image' }
 end
