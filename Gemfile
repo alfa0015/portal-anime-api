@@ -39,6 +39,7 @@ gem 'kaminari'
 gem 'annotate'
 gem "rolify"
 gem 'cancancan'
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'cloudinary', require: false
 gem 'activestorage-cloudinary-service'
 gem 'aws-sdk', '~> 3'
