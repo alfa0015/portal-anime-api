@@ -7,7 +7,7 @@ end
 if Rails.env.development?
   json.cover_medium_url Rails.application.routes.url_helpers.url_for(anime.cover.variant(resize: "400x400"))
 else
-  json.cover_url anime.cover.variant(resize: "400x400").service_url
+  json.cover_medium_url anime.cover.variant(resize: "400x400").service_url
 end
 if Rails.env.development?
   json.cover_small_url Rails.application.routes.url_helpers.url_for(anime.cover.variant(resize: "200x200"))
@@ -22,7 +22,7 @@ end
 if Rails.env.development?
   json.banner_medium_url Rails.application.routes.url_helpers.url_for(anime.banner.variant(resize: "400x400"))
 else
-  json.cover_url anime.banner.variant(resize: "400x400").service_url
+  json.banner_medium_url anime.banner.variant(resize: "400x400").service_url
 end
 if Rails.env.development?
   json.banner_small_url Rails.application.routes.url_helpers.url_for(anime.banner.variant(resize: "200x200"))
