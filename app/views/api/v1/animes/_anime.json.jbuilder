@@ -22,11 +22,11 @@ end
 if Rails.env.development?
   json.banner_medium_url Rails.application.routes.url_helpers.url_for(anime.banner.variant(resize: "400x400"))
 else
-  json.banner_medium_url anime.banner.variant(resize: "400x400").service_url
+  json.banner_medium_url anime.banner.variant(resize: "400x400").processed.service_url
 end
 if Rails.env.development?
   json.banner_small_url Rails.application.routes.url_helpers.url_for(anime.banner.variant(resize: "200x200"))
 else
-  json.banner_small_url anime.banner.variant(resize: "200x200").service_url
+  json.banner_small_url anime.banner.variant(resize: "200x200").processed.service_url
 end
 json.url api_v1_anime_url(anime, format: :json)
