@@ -7,7 +7,7 @@ end
 if Rails.env.development?
   json.cover_medium_url Rails.application.routes.url_helpers.url_for(anime.cover.variant(resize: "400x400"))
 else
-  json.cover_medium_url anime.cover.variant(resize: "400x400").service_url
+  json.cover_medium_url anime.cover.variant(resize: "400x400").processed.service_url
 end
 if Rails.env.development?
   json.cover_small_url Rails.application.routes.url_helpers.url_for(anime.cover.variant(resize: "200x200"))
