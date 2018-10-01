@@ -12,7 +12,7 @@ end
 if Rails.env.development?
   json.cover_small_url Rails.application.routes.url_helpers.url_for(anime.cover.variant(resize: "200x200"))
 else
-  json.cover_small_url anime.cover.variant(resize: "200x200").service_url
+  json.cover_small_url anime.cover.variant(resize: "200x200").processed.service_url
 end
 if Rails.env.development?
   json.banner_url Rails.application.routes.url_helpers.url_for(anime.banner)
