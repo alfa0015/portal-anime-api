@@ -83,7 +83,7 @@ class Api::V1::AnimesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def anime_params
-      params.permit(:name, :synopsis, :sessions, :episodes,:cover,:banner,:tags => [:name])
+      params.permit(:name, :synopsis, :sessions, :episodes,:cover,:banner,:video_url,:tags => [:name])
     end
 
     def tags_params
