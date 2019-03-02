@@ -230,6 +230,13 @@ swagger = {
         },
         {
           in: "formData",
+          name: "video_url",
+          description: "url from video",
+          required: true,
+          type: "string"
+        },
+        {
+          in: "formData",
           name: "tags[0][name]",
           description: "name for tag2",
           required: false,
@@ -344,6 +351,13 @@ swagger = {
           description: "cover image for anime",
           required: false,
           type: "file"
+        },
+        {
+          in: "formData",
+          name: "video_url",
+          description: "url from video",
+          required: false,
+          type: "string"
         },
         {
           in: "formData",
