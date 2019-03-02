@@ -1,4 +1,4 @@
-json.extract! anime, :id, :name, :synopsis, :sessions, :episodes, :tags, :created_at, :updated_at
+json.extract! anime, :id, :name, :synopsis, :sessions, :episodes, :video_url ,:tags, :created_at, :updated_at
 if Rails.env.development?
   json.cover_url Rails.application.routes.url_helpers.url_for(anime.cover)
 else
