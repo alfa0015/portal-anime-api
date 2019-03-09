@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_25_040248) do
+ActiveRecord::Schema.define(version: 2019_03_03_053740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 2019_02_25_040248) do
     t.bigint "banner_file_size"
     t.datetime "banner_updated_at"
     t.string "video_url"
+  end
+
+  create_table "episodes", force: :cascade do |t|
+    t.bigint "anime_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["anime_id"], name: "index_episodes_on_anime_id"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -163,6 +170,7 @@ ActiveRecord::Schema.define(version: 2019_02_25_040248) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "episodes", "animes"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "posts", "users"

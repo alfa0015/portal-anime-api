@@ -27,7 +27,11 @@ json.tags [
   },
   {
     name:"Animes",
-    description:"List all animes"
+    description:"animes"
+  },
+  {
+    name:"Episodes",
+    description:"Episodes to anime"
   }
 ]
 swagger = {
@@ -388,6 +392,119 @@ swagger = {
         }
       ]
     }
+  },
+  "/animes/{anime_id}/episodes":{
+    "get":{
+      "tags": [
+        "Animes"
+      ],
+      "summary": "Episodes",
+      "description": "Return all espisodes to anime",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          in: "query",
+          name: "page",
+          description: "",
+          required: false,
+          type: "integer"
+        },
+        {
+          in: "query",
+          name: "per_page",
+          description: "",
+          required: false,
+          type: "integer"
+        },
+        {
+          in: "path",
+          name: "anime_id",
+          description: "anime id",
+          required: true,
+          type: "integer"
+        },
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+        }
+      }
+    },
+    "post":{
+      "tags": [
+        "Animes"
+      ],
+      "summary": "Create a New Anime",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      consumes: 'multipart/form-data',
+      "parameters": [
+        {
+          in: "path",
+          name: "anime_id",
+          description: "anime id",
+          required: true,
+          type: "integer"
+        },
+        {
+          in: "formData",
+          name: "video",
+          description: "name for anime",
+          required: true,
+          type: "file"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+        },
+        "401": {
+          "description": "Unauthorized for request",
+        }
+      },
+      "security": [
+        {
+          "api_key": []
+        }
+      ]
+    }
+  },
+  '/episodes':{
+    "get":{
+      "tags": [
+        "Episodes"
+      ],
+      "summary": "Episodes",
+      "description": "Return all espisodes",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          in: "query",
+          name: "page",
+          description: "",
+          required: false,
+          type: "integer"
+        },
+        {
+          in: "query",
+          name: "per_page",
+          description: "",
+          required: false,
+          type: "integer"
+        },
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+        }
+      }
+    },
   }
 }
 json.paths swagger

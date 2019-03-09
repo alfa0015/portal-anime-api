@@ -23,6 +23,8 @@
 
 class Anime < ApplicationRecord
 
+  has_many :episodes, dependent: :destroy
+
   has_one_attached :cover
   has_one_attached :banner
 
