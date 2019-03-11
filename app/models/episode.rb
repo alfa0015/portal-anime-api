@@ -12,4 +12,13 @@
 class Episode < ApplicationRecord
   belongs_to :anime
   has_one_attached :video
+  after_create :ws_push_episode
+
+  private
+    def ws_push_episode
+      ActionCable.server.broadcast(
+        "episodes",
+        episode: EpisodeSerializer.new(self).serialized_json
+      )
+    end
 end

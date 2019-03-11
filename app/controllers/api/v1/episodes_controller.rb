@@ -5,6 +5,7 @@ class Api::V1::EpisodesController < ApplicationController
 
     def index
       @episodes = Episode.order(id: :desc).page(page).per(per_page)
+      render json: EpisodeSerializer.new(@episodes).serialized_json
       set_pagination_header(@episodes,"episodes")
     end
     # GET /episode/1
