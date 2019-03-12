@@ -1,8 +1,8 @@
 class Api::V1::AnimesController < ApplicationController
-  before_action :doorkeeper_authorize!, except: [:index,:show]
+  before_action :doorkeeper_authorize!, except: [:index,:show,:episodes]
   load_and_authorize_resource
   before_action :set_anime, only: [:show, :update, :destroy]
-  before_action :set_anime_tag, only: [:add_tags]
+  before_action :set_anime_tag, only: [:add_tags,:episodes]
 
 
   # GET /animes
@@ -12,9 +12,17 @@ class Api::V1::AnimesController < ApplicationController
     set_pagination_header(@animes,"animes")
   end
 
+  # GET /animes/1/episodes
+  # GET /animes/1/episodes.json
+  def episodes
+    episodes = @anime.episodes.order(id: :desc)
+    render json: EpisodeSerializer.new(episodes).serialized_json
+  end
+
   # GET /animes/1
   # GET /animes/1.json
   def show
+    render json: AnimeSerializer.new(@anime).serialized_json
   end
 
   # POST /animes

@@ -11,6 +11,7 @@ class Api::V1::EpisodesController < ApplicationController
     # GET /episode/1
     # GET /episodes/1.json
     def show
+      render json: EpisodeSerializer.new(@episode).serialized_json
     end
   
     # POST /episode

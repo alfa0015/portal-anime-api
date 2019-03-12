@@ -32,9 +32,10 @@ Rails.application.routes.draw do
       resources :animes do
         post '/add_tags', to: "animes#add_tags"
         delete '/delete_tags', to: "animes#delete_tags"
-        resources :episodes, except:[:index]
+        get '/episodes', to: "animes#episodes", as: "episodes"
+        resources :episodes, only:[:create]
       end
-      resources :episodes, only:[:index]
+      resources :episodes, except:[:create]
       resources :rcontrollers do
         resources :ractions
       end

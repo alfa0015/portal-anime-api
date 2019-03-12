@@ -505,7 +505,47 @@ swagger = {
         }
       }
     },
-  }
+  },
+  "/episodes/{id}":{
+    "get":{
+      "tags": [
+        "Episodes"
+      ],
+      "summary": "Episodes",
+      "description": "Return espisode to anime",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          in: "query",
+          name: "page",
+          description: "",
+          required: false,
+          type: "integer"
+        },
+        {
+          in: "query",
+          name: "per_page",
+          description: "",
+          required: false,
+          type: "integer"
+        },
+        {
+          in: "path",
+          name: "id",
+          description: "episode id",
+          required: true,
+          type: "integer"
+        },
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+        }
+      }
+    },
+  },
 }
 json.paths swagger
 json.securityDefinitions do
