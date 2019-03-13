@@ -213,7 +213,7 @@ swagger = {
         },
         {
           in: "formData",
-          name: "episodes",
+          name: "number_episodes",
           description: "number episodes for anime",
           required: true,
           type: "integer"
@@ -231,28 +231,7 @@ swagger = {
           description: "cover image for anime",
           required: true,
           type: "file"
-        },
-        {
-          in: "formData",
-          name: "video_url",
-          description: "url from video",
-          required: true,
-          type: "string"
-        },
-        {
-          in: "formData",
-          name: "tags[0][name]",
-          description: "name for tag2",
-          required: false,
-          type: "string"
-        },
-        {
-          in: "formData",
-          name: "tags[1][name]",
-          description: "name for tag2",
-          required: false,
-          type: "string"
-        },
+        }
       ],
       "responses": {
         "200": {
@@ -337,7 +316,7 @@ swagger = {
         },
         {
           in: "formData",
-          name: "episodes",
+          name: "number_episodes",
           description: "number episodes for anime",
           required: false,
           type: "integer"
@@ -355,28 +334,7 @@ swagger = {
           description: "cover image for anime",
           required: false,
           type: "file"
-        },
-        {
-          in: "formData",
-          name: "video_url",
-          description: "url from video",
-          required: false,
-          type: "string"
-        },
-        {
-          in: "formData",
-          name: "tags[0][name]",
-          description: "name for tag2",
-          required: false,
-          type: "string"
-        },
-        {
-          in: "formData",
-          name: "tags[1][name]",
-          description: "name for tag2",
-          required: false,
-          type: "string"
-        },
+        }
       ],
       "responses": {
         "200": {

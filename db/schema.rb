@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_03_053740) do
+ActiveRecord::Schema.define(version: 2019_03_13_035303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_03_03_053740) do
     t.string "name"
     t.text "synopsis"
     t.integer "sessions"
-    t.integer "episodes"
+    t.integer "number_episodes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.hstore "tags", default: [], array: true
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 2019_03_03_053740) do
     t.string "banner_content_type"
     t.bigint "banner_file_size"
     t.datetime "banner_updated_at"
-    t.string "video_url"
   end
 
   create_table "episodes", force: :cascade do |t|

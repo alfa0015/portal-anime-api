@@ -4,11 +4,11 @@ class Api::V1::AnimesController < ApplicationController
   before_action :set_anime, only: [:show, :update, :destroy]
   before_action :set_anime_tag, only: [:add_tags,:episodes]
 
-
   # GET /animes
   # GET /animes.json
   def index
     @animes = Anime.order(id: :desc).page(page).per(per_page)
+    render json: AnimeSerializer.new(@animes).serialized_json, status: :ok
     set_pagination_header(@animes,"animes")
   end
 
@@ -28,11 +28,6 @@ class Api::V1::AnimesController < ApplicationController
   # POST /animes
   # POST /animes.json
   def create
-    unless params["tags"].present? or params["tags"].blank?
-      tags = params["tags"].each{|k,v| v}
-      tags = tags.map{|k,v| v}
-      params["tags"] = tags
-    end
     @anime = Anime.new(anime_params)
     if @anime.save
       render json: AnimeSerializer.new(@anime).serialized_json, status: :created
@@ -91,7 +86,7 @@ class Api::V1::AnimesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def anime_params
-      params.permit(:name, :synopsis, :sessions, :episodes,:cover,:banner,:video_url,:tags => [:name])
+      params.permit(:name, :synopsis, :sessions, :number_episodes,:cover,:banner)
     end
 
     def tags_params

@@ -6,7 +6,7 @@
 #  name                :string
 #  synopsis            :text
 #  sessions            :integer
-#  episodes            :integer
+#  number_episodes     :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  tags                :hstore           is an Array
@@ -18,7 +18,6 @@
 #  banner_content_type :string
 #  banner_file_size    :bigint(8)
 #  banner_updated_at   :datetime
-#  video_url           :string
 #
 
 FactoryBot.define do
