@@ -20,7 +20,7 @@ class Api::V1::EpisodesController < ApplicationController
       anime = Anime.find(params[:anime_id])
       @episode = anime.episodes.new(episode_params)
       if @episode.save
-        render :show, status: :created
+        render json: EpisodeSerializer.new(@episode).serialized_json, status: :created
       else
         render json: @episode.errors, status: :unprocessable_entity
       end
@@ -30,7 +30,7 @@ class Api::V1::EpisodesController < ApplicationController
     # PATCH/PUT /episodes/1.json
     def update
       if @episode.update(episode_params)
-        render :show, status: :ok
+        render json: EpisodeSerializer.new(@episode).serialized_json, status: :ok
       else
         render json: @episode.errors, status: :unprocessable_entity
       end

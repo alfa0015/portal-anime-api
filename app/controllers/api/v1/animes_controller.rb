@@ -35,7 +35,7 @@ class Api::V1::AnimesController < ApplicationController
     end
     @anime = Anime.new(anime_params)
     if @anime.save
-      render :show, status: :created
+      render json: AnimeSerializer.new(@anime).serialized_json, status: :created
     else
       render json: @anime.errors, status: :unprocessable_entity
     end
@@ -45,7 +45,7 @@ class Api::V1::AnimesController < ApplicationController
   # PATCH/PUT /animes/1.json
   def update
     if @anime.update(anime_params)
-      render :show, status: :ok
+      render json: AnimeSerializer.new(@anime).serialized_json, status: :ok
     else
       render json: @anime.errors, status: :unprocessable_entity
     end

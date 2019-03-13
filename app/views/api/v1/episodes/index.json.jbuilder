@@ -1,1 +1,0 @@
-json.array! @episodes, partial: 'api/v1/episodes/episode', as: :episode
