@@ -13,6 +13,6 @@ Doorkeeper.configure do
   access_token_expires_in 120.hours
   # Issue access tokens with refresh token (disabled by default)
   use_refresh_token
-
+  #token_grant_types
+  grant_flows %w[password]
 end
-Doorkeeper.configuration.token_grant_types << 'password'

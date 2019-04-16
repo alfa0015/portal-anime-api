@@ -1,4 +1,4 @@
-ruby "2.5.1"
+ruby "2.5.5"
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -34,14 +34,13 @@ gem 'bootsnap', require: false
 gem 'rack-cors'
 
 gem 'swagger-docs'
-gem 'devise'
-gem 'doorkeeper'
+gem "devise", ">= 4.6.0"
+gem "doorkeeper", ">= 4.4.0"
 gem 'rails_12factor'
 gem 'kaminari'
 gem 'annotate'
 gem "rolify"
 gem 'cancancan'
-gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'cloudinary', require: false
 gem 'activestorage-cloudinary-service'
 gem 'aws-sdk', '~> 3'

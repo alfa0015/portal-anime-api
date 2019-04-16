@@ -1,23 +1,17 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV['DATABASE_HOST'] %>
 
 
 development:
   <<: *default
-  database: amazon_marker_development
+  url: <%= ENV['DEVELOPMENT_DATABASE_URL'] %>
 
 test:
   <<: *default
-  database: amazon_marker_test
+  url: <%= ENV['TEST_DATABASE_URL'] %>
 
 production:
-  # <<: *default
-  # database: amazon_marker_production
-  # username: amazon_marker
-  # password: <%= ENV['AMAZON_MARKER_DATABASE_PASSWORD'] %>
+  <<: *default
   url: <%= ENV['DATABASE_URL'] %>
