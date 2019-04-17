@@ -45,14 +45,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_035303) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.hstore "tags", default: [], array: true
-    t.string "cover_file_name"
-    t.string "cover_content_type"
-    t.bigint "cover_file_size"
-    t.datetime "cover_updated_at"
-    t.string "banner_file_name"
-    t.string "banner_content_type"
-    t.bigint "banner_file_size"
-    t.datetime "banner_updated_at"
   end
 
   create_table "episodes", force: :cascade do |t|
