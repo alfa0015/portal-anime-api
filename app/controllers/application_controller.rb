@@ -40,6 +40,8 @@ class ApplicationController < ActionController::API
     headers["x-per-page"] = per_page
     #print total records
     headers["x-total"] = resource.total_count
+    #print total pages
+    headers["x-page-total"] = (resource.total_count.to_f / per_page.to_f).ceil
     #print next page url
     headers["next_page"] = eval "api_v1_#{resource_name}_url(request.query_parameters.merge(page: resource.next_page))" if resource.next_page
     #print prev page url
